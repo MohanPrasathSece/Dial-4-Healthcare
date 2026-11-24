@@ -36,30 +36,30 @@
 }
 
 :root {
-  --radius: 0.5rem;
-  --background: oklch(0.986 0.008 224);
-  --foreground: oklch(0.26 0.012 286);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.26 0.012 286);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.26 0.012 286);
-  --primary: oklch(0.69 0.16 232);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.95 0.028 224);
-  --secondary-foreground: oklch(0.37 0.09 235);
-  --muted: oklch(0.96 0.012 222);
-  --muted-foreground: oklch(0.54 0.026 260);
-  --accent: oklch(0.945 0.036 224);
-  --accent-foreground: oklch(0.32 0.045 250);
-  --destructive: oklch(0.58 0.21 27);
-  --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.91 0.02 225);
-  --input: oklch(0.92 0.018 225);
-  --ring: oklch(0.69 0.16 232);
-  --brand-deep: oklch(0.59 0.16 239);
-  --brand-wash: oklch(0.958 0.025 223);
-  --brand-line: oklch(0.89 0.045 222);
-  --shadow-soft: 0 18px 42px -30px color-mix(in oklab, var(--brand-deep) 30%, transparent);
+  --radius: 0.75rem;
+  --background: #F4FAFD;
+  --foreground: #292729;
+  --card: #FFFFFF;
+  --card-foreground: #292729;
+  --popover: #FFFFFF;
+  --popover-foreground: #292729;
+  --primary: #00AEEF;
+  --primary-foreground: #FFFFFF;
+  --secondary: #E8F7FC;
+  --secondary-foreground: #0098D4;
+  --muted: #F0F7FA;
+  --muted-foreground: #5B6B79;
+  --accent: #E8F7FC;
+  --accent-foreground: #0098D4;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --border: #E1EFF5;
+  --input: #E1EFF5;
+  --ring: #00AEEF;
+  --brand-deep: #0098D4;
+  --brand-wash: #E8F7FC;
+  --brand-line: #D5EBF5;
+  --shadow-soft: 0 16px 38px -18px rgba(0, 152, 212, 0.22);
 }
 
 .dark {
@@ -1208,6 +1208,25 @@
   }
 }
 
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 45s linear infinite;
+}
+
+.animate-marquee-left:hover {
+  animation-play-state: paused;
+}
+
 @media (max-width: 1100px) {
   .desktop-navigation {
     gap: 0.72rem;
@@ -1526,3 +1545,228 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Custom Scroll & Highlight Animations */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes search-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 4px rgba(0, 174, 239, 0.22), 0 20px 45px -12px rgba(0, 152, 212, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(0, 174, 239, 0.42), 0 25px 50px -10px rgba(0, 152, 212, 0.38);
+  }
+}
+
+.search-highlight-box {
+  animation: search-glow 3.2s ease-in-out infinite;
+}
+
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(-6px);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+.animate-float-slow {
+  animation: float-gentle 4.5s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 5s ease-in-out infinite;
+}
+
+/* Pulsing aura for hero visual background */
+@keyframes pulse-aura {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-aura {
+  animation: pulse-aura 5.5s ease-in-out infinite;
+}
+
+/* Button pulse ring */
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 174, 239, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 174, 239, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 174, 239, 0);
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Button light shimmer sweep on hover */
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(250%) skewX(-20deg);
+  }
+}
+
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 45%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.38), transparent);
+  transform: translateX(-150%) skewX(-20deg);
+  pointer-events: none;
+}
+
+.btn-shimmer:hover::after {
+  animation: shimmer-sweep 1.2s ease-in-out infinite;
+}
+
+/* Premium card hover lift with soft blue atmospheric glow */
+.card-glow-hover {
+  position: relative;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-glow-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 35px -10px rgba(0, 174, 239, 0.22), 0 1px 3px rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 174, 239, 0.55);
+}
+
+/* Subtle background gradient shift */
+@keyframes gradient-drift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.bg-animated-gradient {
+  background-size: 200% 200%;
+  animation: gradient-drift 12s ease infinite;
+}
+
+/* Medical Heartbeat pulse on icon hover */
+@keyframes heart-beat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.15); }
+  50% { transform: scale(1.06); }
+  75% { transform: scale(1.18); }
+}
+
+.animate-beat-hover:hover {
+  animation: heart-beat 0.7s ease-in-out;
+}
+
+.snap-inline-start {
+  scroll-snap-align: start;
+}
+
+/* Scroll Reveal Utilities */
+.reveal-init {
+  opacity: 0;
+  transform: translate3d(0, 26px, 0);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-init.reveal-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.reveal-scale-init {
+  opacity: 0;
+  transform: scale(0.94) translate3d(0, 22px, 0);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-scale-init.reveal-visible {
+  opacity: 1;
+  transform: scale(1) translate3d(0, 0, 0);
+}
+
+.reveal-fade-left {
+  opacity: 0;
+  transform: translate3d(-32px, 0, 0);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-fade-left.reveal-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.reveal-fade-right {
+  opacity: 0;
+  transform: translate3d(32px, 0, 0);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-fade-right.reveal-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-init,
+  .reveal-scale-init,
+  .reveal-fade-left,
+  .reveal-fade-right {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Scroll progress bar */
+.scroll-progress-line {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3.5px;
+  background: linear-gradient(90deg, #00AEEF, #0098D4);
+  z-index: 100;
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 10px rgba(0, 174, 239, 0.6);
+}
+
