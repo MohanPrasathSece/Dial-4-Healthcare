@@ -909,28 +909,6 @@ function HomePage() {
   const doctorScrollRef = useRef<HTMLDivElement>(null);
   const isDoctorHoveredRef = useRef(false);
 
-  // Auto-scroll doctors carousel every 3 seconds by one card width
-  useEffect(() => {
-    const timer = setInterval(() => {
-      if (isDoctorHoveredRef.current) return;
-      const el = doctorScrollRef.current;
-      if (!el) return;
-
-      const firstCard = el.firstElementChild as HTMLElement | null;
-      // Single card width + gap (gap-6 = 24px)
-      const step = firstCard ? firstCard.offsetWidth + 24 : 368;
-
-      // Loop back smoothly to the beginning if reaching the end
-      if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 30) {
-        el.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        el.scrollBy({ left: step, behavior: "smooth" });
-      }
-    }, 3000);
-
-    return () => clearInterval(timer);
-  }, [filteredDoctors]);
-
   // Modals state
   const [appointmentModalOpen, setAppointmentModalOpen] = useState(false);
   const [guidanceModalOpen, setGuidanceModalOpen] = useState(false);
@@ -1012,6 +990,28 @@ function HomePage() {
       `${d.name} ${d.speciality} ${d.bestKnownFor} ${d.category} ${d.location}`.toLowerCase().includes(q)
     );
   }, [submittedSearch, doctorCategoryFilter]);
+
+  // Auto-scroll doctors carousel every 3 seconds by one card width
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (isDoctorHoveredRef.current) return;
+      const el = doctorScrollRef.current;
+      if (!el) return;
+
+      const firstCard = el.firstElementChild as HTMLElement | null;
+      // Single card width + gap (gap-6 = 24px)
+      const step = firstCard ? firstCard.offsetWidth + 24 : 368;
+
+      // Loop back smoothly to the beginning if reaching the end
+      if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 30) {
+        el.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        el.scrollBy({ left: step, behavior: "smooth" });
+      }
+    }, 3000);
+
+    return () => clearInterval(timer);
+  }, [filteredDoctors]);
 
   // Live instant search matches dropdown
   const liveMatches = useMemo(() => {
