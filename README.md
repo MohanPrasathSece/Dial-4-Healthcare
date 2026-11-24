@@ -1,28 +1,18 @@
-# Meet Our Doctors
+# Dial 4 Healthcare (D4H)
 
-and a section to show doctor images
+Healthcare discovery and service provider network platform connecting patients with trusted doctors, multi-speciality hospitals, and accredited diagnostic centres.
 
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/dc2b3160-ca29-4cb0-b90a-484b83db5e24).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+Developed by **amzcoz**
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+pnpm install
+pnpm run dev
 ```
 
-# Dial-4-Healthcare
+## Production Build
 
-# Dial-4-Healthcare
+```sh
+pnpm run build
+```

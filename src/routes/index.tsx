@@ -2498,16 +2498,8 @@ function HomePage() {
           <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm text-white/60">
             <div>Copyright 2026 Dial 4 Healthcare. All Rights Reserved.</div>
             <div>
-              Designed By{" "}
-              <a
-                href="https://www.azhariinfotech.com/"
-                target="_blank"
-                rel="noreferrer"
-                className="text-[#00AEEF] hover:underline"
-              >
-                Azhari Infotech
-              </a>
-              .
+              Developed by{" "}
+              <span className="text-[#00AEEF] font-semibold">amzcoz</span>
             </div>
           </div>
         </div>
